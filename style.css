@@ -1,0 +1,221 @@
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #e74c3c;
+    --background-color: #ecf0f1;
+    --text-color: #34495e;
+    --card-background: #ffffff;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 10 20px;
+    text-align: center;
+}
+
+header {
+    background: var(--primary-color);
+    padding: 2rem 0;
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    color: #ffffff;
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+#product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.product {
+    background-color: var(--card-background);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.product img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product:hover img {
+    transform: scale(1.05);
+}
+
+.product-info {
+    padding: 1.5rem;
+}
+
+.product h3 {
+    font-family: 'Playfair Display', serif;
+    margin-top: 0;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.product p {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-bottom: 1rem;
+}
+
+.product .price {
+    font-weight: bold;
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.product button {
+    background: var(--secondary-color);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.product button:hover {
+    background: #c0392b;
+}
+
+.product button:active {
+    transform: scale(0.95);
+}
+
+#shopping-cart {
+    background-color: var(--card-background);
+    margin-top: 2rem;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+#cart-items {
+    margin-bottom: 1rem;
+}
+
+#cart-items > div {
+    border-bottom: 1px solid #eee;
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#cart-total {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 1rem 0;
+    text-align: right;
+}
+
+#checkout-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: block;
+    width: 100%;
+    font-size: 1rem;
+}
+
+#checkout-btn:hover {
+    background: #34495e;
+}
+
+#checkout-btn:active {
+    transform: scale(0.98);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.product {
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes addToCartPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.product button:hover {
+    animation: addToCartPulse 0.5s ease-in-out;
+}
+
+@keyframes cartItemSlideIn {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+#cart-items > div {
+    animation: cartItemSlideIn 0.3s ease-out;
+}
+
+@keyframes checkoutBounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-5px); }
+    60% { transform: translateY(-3px); }
+}
+
+#checkout-btn:hover {
+    animation: checkoutBounce 1s ease infinite;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    #product-list {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+
+    .container {
+        width: 95%;
+    }
+}
